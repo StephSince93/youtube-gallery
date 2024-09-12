@@ -18,7 +18,7 @@ const SearchContainer = () => (
             alignContent: "center",
           }}
         >
-          <h2 style={{ color: "#ADFF00" }}>(Logo Here) Medea</h2>
+          <h2 style={{ color: "#ADFF00" }}>(Logo Here) Youtube Videos</h2>
         </div>
         <div
           style={{
@@ -36,7 +36,7 @@ const SearchContainer = () => (
         <hr />
   
         <div style={{bottom: 0, position: 'absolute'}}>
-          <h2 style={{ color: "#ADFF00" }}>(Home Icon)Welcome to Medea!</h2>
+          <h2 style={{ color: "#ADFF00" }}>(Home Icon)Welcome to the Video Library!</h2>
         </div>
       </div>
     </div>

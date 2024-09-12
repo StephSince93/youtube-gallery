@@ -3,33 +3,33 @@
     url: "https://www.youtube.com/watch?v=LXb3EKWsInQ",
 */
 
-import { useEffect, useState } from "react";
-
+import { useVideoContext } from "../context/videoContext";
 type Props = {
     setOpen: (openModal: boolean) => (boolean);
  }
 
 const AddVideo = (props: Props) => {
-  const [newVideo, setNewVideo] = useState({});
+    const { addVideo } = useVideoContext();
+    const handleSubmit = async (e: React.SyntheticEvent) => {
+    try {
+        // TODO: Add validation to form fields
+        e.preventDefault();
+        const target = e.target as typeof e.target & {
+          vname: { value: string };
+          url: { value: string };
+        };
 
-  const handleSubmit = (e: React.SyntheticEvent) => {
-    e.preventDefault();
-    const target = e.target as typeof e.target & {
-      vname: { value: string };
-      url: { value: string };
-    };
-    console.log(target.vname.value);
-    console.log(target.url.value);
-    const now = new Date().getTime();
-    setNewVideo({ ...{ name: target.vname.value, url: target.url.value, createdAt: now } });
+        const now = new Date().getTime();
+    
+        addVideo(target.vname.value, target.url.value, now);
 
-    props.setOpen(false);
+        //TODO: Add response to user
+        props.setOpen(false);
+    } catch(e) {
+        //Handle Error
+    }
   };
 
-  useEffect(() => {
-    console.log(newVideo);
-  }
-,[newVideo]);
   return (
     <>
       <div

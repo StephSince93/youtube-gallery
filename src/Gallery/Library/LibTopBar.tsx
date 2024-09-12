@@ -1,20 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import AddVideo from "../Dialogs/AddVideo";
-import { getVideos } from "../../http/library";
 
 const LibTopBar = () => {
   const [openForm, setOpenForm] = useState(false);
 
-
-  useEffect(() => {
-
-    const test = async function() {
-        const res = await getVideos();
-        console.log(res);
-
-    }
-    test();
-  }, []);
 
   const clickedButton = (e: React.SyntheticEvent): void => {
     setOpenForm(!openForm);
