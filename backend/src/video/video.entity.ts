@@ -11,9 +11,9 @@ export class Video {
   @Column()
   url: string;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, type: 'bigint' })
   updatedAt?: number;
 
-  @Column()
+  @Column({ type: 'bigint' })
   createdAt: number;
 }

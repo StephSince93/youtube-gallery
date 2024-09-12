@@ -27,11 +27,11 @@ __decorate([
     __metadata("design:type", String)
 ], Video.prototype, "url", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ nullable: true }),
+    (0, typeorm_1.Column)({ nullable: true, type: 'bigint' }),
     __metadata("design:type", Number)
 ], Video.prototype, "updatedAt", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, typeorm_1.Column)({ type: 'bigint' }),
     __metadata("design:type", Number)
 ], Video.prototype, "createdAt", void 0);
 exports.Video = Video = __decorate([
