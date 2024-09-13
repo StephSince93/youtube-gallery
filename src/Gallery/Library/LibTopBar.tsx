@@ -36,7 +36,7 @@ const LibTopBar = () => {
           }}
           onClick={clickedButton}
         >
-          Add New Video
+          Create
         </button>
       </div>
       {openForm && <AddVideo setOpen={(open) => setOpen(open)}/>}

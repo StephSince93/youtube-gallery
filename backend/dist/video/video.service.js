@@ -28,6 +28,12 @@ let VideoService = class VideoService {
     async findAll() {
         return this.videosRepository.find();
     }
+    async delete(id) {
+        const result = await this.videosRepository.delete(id);
+        if (result.affected === 0) {
+            throw new common_1.NotFoundException(`Video with ID ${id} not found`);
+        }
+    }
 };
 exports.VideoService = VideoService;
 exports.VideoService = VideoService = __decorate([

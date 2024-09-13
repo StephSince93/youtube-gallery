@@ -6,4 +6,5 @@ export declare class VideoService {
     constructor(videosRepository: Repository<Video>);
     create(createVideoDto: CreateVideoDto): Promise<Video>;
     findAll(): Promise<Video[]>;
+    delete(id: number): Promise<void>;
 }

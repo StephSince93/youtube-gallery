@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Get } from '@nestjs/common';
+import { Controller, Post, Body, Get, Delete, Param } from '@nestjs/common';
 import { VideoService } from './video.service';
 import { CreateVideoDto } from './create-video.dto';
 import { Video } from './video.entity';
@@ -17,5 +17,9 @@ export class VideoController {
   @Get()
   async findAll(): Promise<Video[]> {
     return this.videosService.findAll();
+  }
+  @Delete(':id')
+  async deleteVideo(@Param('id') id: number): Promise<void> {
+    return this.videosService.delete(id);
   }
 }

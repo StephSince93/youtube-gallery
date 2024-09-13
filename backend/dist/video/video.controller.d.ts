@@ -6,4 +6,5 @@ export declare class VideoController {
     constructor(videosService: VideoService);
     create(createVideoDto: CreateVideoDto): Promise<Video>;
     findAll(): Promise<Video[]>;
+    deleteVideo(id: number): Promise<void>;
 }

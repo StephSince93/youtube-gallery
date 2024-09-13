@@ -1,6 +1,6 @@
 import React, { createContext, useState, useContext, ReactNode } from 'react';
 
-import { addNewVideo, getVideos } from '../../http/library';
+import { addNewVideo, getVideos, deleteVideo } from '../../http/library';
 // Define the type for a video
 type Video = {
   id: number;
@@ -15,6 +15,7 @@ interface VideoContextType {
   videos: Video[];
   fetchVideos: () => Promise<void>;
   addVideo: (name: string, url: string, createdAt: number) => void;
+  deleteVideoById: (id: number) => Promise<void>; 
 }
 
 // Create a default context
@@ -54,9 +55,19 @@ export const VideoProvider = ({ children }: VideoProviderProps) => {
     }
   };
 
+  const deleteVideoById = async (id: number) => {
+    try {
+      await deleteVideo(id);
+
+      setVideos((prevVideos) => prevVideos.filter((video) => video.id !== id));
+    } catch (error) {
+      console.error('Failed to delete video', error);
+    }
+  };
+
   // Provide the state and functions to the rest of the app
   return (
-    <VideoContext.Provider value={{ videos, fetchVideos, addVideo }}>
+    <VideoContext.Provider value={{ videos, fetchVideos, addVideo, deleteVideoById }}>
       {children}
     </VideoContext.Provider>
   );

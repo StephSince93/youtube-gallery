@@ -9,3 +9,7 @@ export async function getVideos() {
 export async function addNewVideo({name, url, createdAt}) {
     return await axios.post(`${SERVER}videos`, {name, url, createdAt});
 }
+
+export async function deleteVideo(id) {
+    return await axios.delete(`${SERVER}videos/${id}`);
+}

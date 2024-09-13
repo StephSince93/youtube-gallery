@@ -5,37 +5,31 @@ import YouTube, { YouTubeProps } from "react-youtube";
 import { useVideoContext } from "../context/videoContext";
 
 
-interface Video {
-  id: number;
-  name: string;
-  url: string;
-  updatedAt?: number;
-  createdAt: number;
-}
 
 const opts: YouTubeProps["opts"] = {
   height: "390",
   width: "400",
-  // playerVars: {
-  //   // https://developers.google.com/youtube/player_parameters
-  //   autoplay: 1,
-  // },
 };
 
 const LibVideoLayout = () => {
-  const { videos, fetchVideos } = useVideoContext();
-
-  const [videoList, setVideoList] = useState<Video[]>([]);
+  const { videos, fetchVideos, deleteVideoById } = useVideoContext();
 
   useEffect(() => {
     const asyncGetVideos = async function () {
       try {
         await fetchVideos();
-        setVideoList(videos);
       } catch (e) {}
     };
     asyncGetVideos();
-  }, [videos]);
+  }, []);
+
+  const deleteVideo = async (id:number) => {
+    try {
+        await deleteVideoById(id);
+    }catch(e) {
+        console.log('There was an issue deleting video');
+    }
+  }
 
   return (
     <div
@@ -55,10 +49,11 @@ const LibVideoLayout = () => {
           gridAutoFlow: "row",
         }}
       >
-        {videoList.map((v) => (
-          <div key={v.id} style={{ textAlign: "center", margin: "1px" }}>
-            <p>{v.name}</p>
+        {videos.map((v, i) => (
+          <div key={i} style={{ textAlign: "center", margin: "1px" }}>
+            <p style={{color: 'white'}}>{v.name}</p>
             <YouTube videoId={v.url.split("=")[1]} opts={opts} />
+            <button onClick={() => deleteVideo(v.id)}>Delete Video</button>
           </div>
         ))}
       </div>

@@ -36,7 +36,7 @@ const AddVideo = (props: Props) => {
         style={{
           position: "absolute",
           height: "200px",
-          width: "200px",
+          width: "300px",
           left: "50%",
           top: "30%",
           transform: "translate(-50%, -50%)",
@@ -51,8 +51,8 @@ const AddVideo = (props: Props) => {
           }}
         >
           <form onSubmit={handleSubmit}>
-            <div style={{ width: "80%", padding: "2px", textAlign: "center" }}>
-              <label htmlFor="vname">Video Name:</label>
+            <div style={{ padding: "2px", marginTop: "10px", marginBottom: "10px", marginLeft: "-20px", textAlign: "center" }}>
+              <label htmlFor="vname">Name:</label>
               <input
                 style={{ height: "30px" }}
                 type="text"
@@ -62,8 +62,6 @@ const AddVideo = (props: Props) => {
             </div>
             <div
               style={{
-                width: "80%",
-                padding: "2px",
                 margin: "px",
                 textAlign: "center",
               }}
@@ -77,7 +75,7 @@ const AddVideo = (props: Props) => {
               />
             </div>
             <div
-              style={{ width: "80%", paddingTop: "10px", textAlign: "center" }}
+              style={{ marginTop: '5px', paddingTop: "10px", textAlign: "center" }}
             >
               <input
                 style={{ height: "30px" }}

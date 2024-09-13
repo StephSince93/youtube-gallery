@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Video } from './video.entity';
@@ -19,5 +19,12 @@ export class VideoService {
   // Optionally add methods to fetch users for verification or other purposes
   async findAll(): Promise<Video[]> {
     return this.videosRepository.find();
+  }
+
+  async delete(id: number): Promise<void> {
+    const result = await this.videosRepository.delete(id);
+    if (result.affected === 0) {
+      throw new NotFoundException(`Video with ID ${id} not found`);
+    }
   }
 }

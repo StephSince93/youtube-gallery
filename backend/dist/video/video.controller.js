@@ -26,6 +26,9 @@ let VideoController = class VideoController {
     async findAll() {
         return this.videosService.findAll();
     }
+    async deleteVideo(id) {
+        return this.videosService.delete(id);
+    }
 };
 exports.VideoController = VideoController;
 __decorate([
@@ -41,6 +44,13 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], VideoController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], VideoController.prototype, "deleteVideo", null);
 exports.VideoController = VideoController = __decorate([
     (0, common_1.Controller)('videos'),
     __metadata("design:paramtypes", [video_service_1.VideoService])
